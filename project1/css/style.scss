@@ -1,25 +1,4 @@
 
-/*
-
-    What do the mixins do? Avoid writing media query over and over again
-    They provide a semantic media query mixin for the following:
-
-    Respond above XX.
-    Respond below XX.
-    Respond between XX and XX.
-    Where XX is the two letter Bootstrap breakpoint (i.e. sm, md).
-
-    Usual way: @media (min-width: 768px) and (max-width: 991px) {
-        Target devices between 768px and 992px. 
-    }
-  
-
-*/
-
-/*
-    It’s best practice to use Bootstrap’s breakpoints in your own code but it’s painful to write them all the time. To get around that I use a Sass map of values:
-*/
-
 $breakpoints: (
     xs: 0,
     sm: 576px,
@@ -75,9 +54,28 @@ $breakpoint: map-get($breakpoints, xxl); // Get the extra extra large breakpoint
     }
   }
 
+  @include respond-above(xs) {
+    div .back {
+      position: absolute;
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          top: 0;
+          z-index: -2;
+          opacity: 0.6;
+      
+    }
+  }
+
   @include respond-above(sm) {
-    .card {
-      display: block;
+    .back {
+      position: absolute;
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          top: 0;
+          z-index: -2;
+          opacity: 0.6;
     }
   }
 
@@ -106,12 +104,21 @@ $breakpoint: map-get($breakpoints, xxl); // Get the extra extra large breakpoint
 }
 
 @include respond-below(lg) {
-    .contents {
-      display:block;
-    }
+   
+  
+      .back {
+        position: absolute;
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          top: 0;
+          z-index: -2;
+          opacity: 0.6;
+      }
+  }
 
     
-}
+
 
 /*
     Respond between
@@ -152,11 +159,16 @@ $breakpoint: map-get($breakpoints, xxl); // Get the extra extra large breakpoint
   }
 
   @include respond-between(sm, xxl) {
-    .contents{
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  
+    
+    .back
+        {
+          position: absolute;
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          top: 0;
+          z-index: -2;
+          opacity: 0.6;
+        }
   }
